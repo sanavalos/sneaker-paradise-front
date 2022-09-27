@@ -19,7 +19,7 @@ function Order() {
   return (
     <>
       <NavBar />
-      <div className="text-white mt-44 border border-[#00ff01] w-[700px] ml-[620px]">
+      <div className="text-white mt-44 border border-[#00ff01] w-[50%] ml-[25%] ">
         <h2 className="text-center font-bold text-lg text-[#00ff01] mt-2">
           ORDER
         </h2>
