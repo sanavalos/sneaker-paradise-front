@@ -26,7 +26,7 @@ function CreateShoes() {
               errorsActicon.brand = "Enter a valid brand";
             } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.brand)) {
               errorsActicon.brand =
-                "The name can only contain letters and spaces";
+                "The brand's name can only contain letters and spaces";
             }
 
             //name
@@ -34,7 +34,7 @@ function CreateShoes() {
               errorsActicon.name = "Enter a valid name";
             } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.name)) {
               errorsActicon.name =
-                "The name can only contain letters and spaces";
+                "The shoes' name can only contain letters and spaces";
             }
 
             //color
@@ -42,7 +42,7 @@ function CreateShoes() {
               errorsActicon.color = "Enter a valid color";
             } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.color)) {
               errorsActicon.color =
-                "The name can only contain letters and spaces";
+                "The color can only contain letters and spaces";
             }
 
             //price
@@ -69,9 +69,9 @@ function CreateShoes() {
             //description
             if (!values.description) {
               errorsActicon.description = "Enter a valid description";
-            } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.description)) {
+            } else if (!/^[a-zA-ZÀ-ÿ,.\s]{1,900}$/.test(values.description)) {
               errorsActicon.description =
-                "The name can only contain letters and spaces";
+                "The description can only contain letters and spaces";
             }
 
             return errorsActicon;
