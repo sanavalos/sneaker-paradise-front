@@ -218,7 +218,7 @@ function checkout({ products, subTotal }) {
 
     return (
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autocomplete="off">
           <div className="pb-5 rounded-t border-b-2 border-gray-400 overflow-visible">
             <span className="text-xl font-medium text-white block pb-3">
               Address
@@ -316,10 +316,8 @@ function checkout({ products, subTotal }) {
               </div>
 
               <div className="flex justify-between items-center mt-3">
-                <span className="text-xs text-[#00ff01]">
-                  {data.name}
-                </span>
-                <span className="text-xs text-[#00ff01]">**/**</span>
+                <span className="text-xs text-[#00ff01]">{data.name}</span>
+                <span className="text-xs text-[#00ff01]">XX/XX</span>
               </div>
             </div>
 
