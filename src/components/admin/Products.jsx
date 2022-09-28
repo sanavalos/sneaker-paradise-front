@@ -4,45 +4,45 @@ import { Link } from "react-router-dom";
 import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
 import { MdLocalOffer, MdCreateNewFolder } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { deleteShoe, modifShoe, getShoes, createSize } from "../../redux/actions/actions";
+import {
+  deleteShoe,
+  modifShoe,
+  getShoes,
+  createSize,
+} from "../../redux/actions/actions";
 
 function Products({ products }) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete shoe!'
-  }).then(async(result) => {
-    if (result.isConfirmed) { 
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete shoe!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
         dispatch(deleteShoe(products._id));
         await axios.delete(
-          `https://sneakers-back-end.herokuapp.com/shoes/${products._id}`
+          `https://sneaker-paradise-back-production.up.railway.app/shoes/${products._id}`
         );
-      Swal.fire(
-        'Deleted!',
-        'Your shoe has been deleted.',
-        'success'
-      )
-    }
-  })
-}
+        Swal.fire("Deleted!", "Your shoe has been deleted.", "success");
+      }
+    });
+  };
 
-const handleOnSale = async()=>{
-  const { data } = await axios.put(
-    `https://sneakers-back-end.herokuapp.com/admin/onsale/${products._id}`,
-    {
-      onSale: products.onSale === true ? false : true
-    }
+  const handleOnSale = async () => {
+    const { data } = await axios.put(
+      `https://sneaker-paradise-back-production.up.railway.app/admin/onsale/${products._id}`,
+      {
+        onSale: products.onSale === true ? false : true,
+      }
     );
-    dispatch(getShoes())
-  }
-  
+    dispatch(getShoes());
+  };
 
   return (
     <>
@@ -70,17 +70,25 @@ const handleOnSale = async()=>{
           </div>
         </td>
         <td className="px-4 py-3 text-sm uppercase">{products.brand}</td>
-        <td className="px-4 py-3 text-sm capitalize">{products.onSale.toString()}</td>
+        <td className="px-4 py-3 text-sm capitalize">
+          {products.onSale.toString()}
+        </td>
         <td className="px-4 py-3 text-sm">
           <Link to={"/modifshoe"}>
-            <button onClick={()=>dispatch(modifShoe(products._id))} className="w-8 h-8">
+            <button
+              onClick={() => dispatch(modifShoe(products._id))}
+              className="w-8 h-8"
+            >
               <AiTwotoneEdit />
             </button>
           </Link>
         </td>
         <td className="px-4 py-3 text-sm">
           <Link to={"/createsize"}>
-            <button onClick={()=>dispatch(createSize(products._id))} className="w-8 h-8">
+            <button
+              onClick={() => dispatch(createSize(products._id))}
+              className="w-8 h-8"
+            >
               <MdCreateNewFolder />
             </button>
           </Link>

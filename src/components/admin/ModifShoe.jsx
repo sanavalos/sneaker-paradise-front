@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function ModifShoe() {
   const shoe = useSelector((state) => state.shoes);
@@ -20,12 +20,12 @@ function ModifShoe() {
             color: `${shoe[0].color}`,
             price: `${shoe[0].price}`,
             size: "",
-            q: ""
+            q: "",
           }}
           validate={(values) => {
             let errorsActicon = {};
 
-           //brand
+            //brand
             if (!values.brand) {
               errorsActicon.brand = "Enter a valid brand";
             }
@@ -36,9 +36,9 @@ function ModifShoe() {
             }
 
             //image
-                if(!values.image){
-                    errorsActicon.image = 'Add a valid image'
-                }
+            if (!values.image) {
+              errorsActicon.image = "Add a valid image";
+            }
 
             //color
             if (!values.color) {
@@ -70,7 +70,7 @@ function ModifShoe() {
           onSubmit={async (e, { resetForm }) => {
             try {
               const { data } = await axios.put(
-                `https://sneakers-back-end.herokuapp.com/shoes/${shoe[0]._id}`,
+                `https://sneaker-paradise-back-production.up.railway.app/shoes/${shoe[0]._id}`,
                 {
                   brand: e.brand,
                   name: e.name,
@@ -80,11 +80,12 @@ function ModifShoe() {
                   price: e.price,
                   size: e.size,
                   q: e.q,
-                  onSale: false
-                },{
-                  "headers":{
-                    "Content-Type": "multipart/form-data"
-                  }
+                  onSale: false,
+                },
+                {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
                 }
               );
               navigate("/admin");
@@ -136,7 +137,7 @@ function ModifShoe() {
                   name="name"
                   placeholder={shoe[0].name}
                   className="block text-sm py-3 px-4 rounded-lg w-full border outline-none capitalize mb-4"
-                  />
+                />
                 <ErrorMessage
                   name="name"
                   component={() => (
@@ -179,10 +180,13 @@ function ModifShoe() {
                 <Field
                   as="select"
                   name="size"
-                  className="block text-sm py-3 px-4 rounded-lg w-full border outline-none mb-4">
-                    <option value="">Size</option>
-                  {shoe[0].stock.map(e=> <option value={e.size}>{e.size}</option>)}
-                  </Field>
+                  className="block text-sm py-3 px-4 rounded-lg w-full border outline-none mb-4"
+                >
+                  <option value="">Size</option>
+                  {shoe[0].stock.map((e) => (
+                    <option value={e.size}>{e.size}</option>
+                  ))}
+                </Field>
                 <ErrorMessage
                   name="size"
                   component={() => (
@@ -223,7 +227,7 @@ function ModifShoe() {
                 <input
                   type="file"
                   name="image"
-                  onChange={e => setFieldValue("image", e.target.files[0])}
+                  onChange={(e) => setFieldValue("image", e.target.files[0])}
                   className="block text-sm py-3 px-4 rounded-lg w-full border outline-none"
                 />
                 <ErrorMessage
@@ -242,9 +246,11 @@ function ModifShoe() {
                 >
                   Modify
                 </button>
-                <Link to='/admin'><button className="py-3 w-64 text-xl rounded-2xl mx-1">
-                        Back to Admin
-                        </button></Link>
+                <Link to="/admin">
+                  <button className="py-3 w-64 text-xl rounded-2xl mx-1">
+                    Back to Admin
+                  </button>
+                </Link>
               </div>
             </Form>
           )}

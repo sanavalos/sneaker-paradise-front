@@ -8,29 +8,24 @@ function Brands({ brands }) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete brand!'
-  }).then(async(result) => {
-    if (result.isConfirmed) { 
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete brand!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
         dispatch(deleteBrand(brands._id));
         await axios.delete(
-          `https://sneakers-back-end.herokuapp.com/brands/${brands._id}`
+          `https://sneaker-paradise-back-production.up.railway.app/brands/${brands._id}`
         );
-      Swal.fire(
-        'Deleted!',
-        'Your brand has been deleted.',
-        'success'
-      )
-    }
-  })
-}
-  
+        Swal.fire("Deleted!", "Your brand has been deleted.", "success");
+      }
+    });
+  };
 
   return (
     <>
@@ -39,9 +34,7 @@ function Brands({ brands }) {
           <div className="flex items-center text-sm">
             <div>
               <p className="font-bold uppercase">{brands.name}</p>
-              <p className="text-xs text-gray-600">
-                {brands._id}
-              </p>
+              <p className="text-xs text-gray-600">{brands._id}</p>
             </div>
           </div>
         </td>

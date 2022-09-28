@@ -4,37 +4,37 @@ import { useDispatch } from "react-redux";
 import { getUsers } from "../../redux/actions/actions";
 
 function Users({ users }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const handleStatusDisable = async()=>{
+  const handleStatusDisable = async () => {
     const { data } = await axios.put(
-      `https://sneakers-back-end.herokuapp.com/users/${users._id}`,
+      `https://sneaker-paradise-back-production.up.railway.app/users/${users._id}`,
       {
-        status: "Disabled"
-      }
-      );
-    dispatch(getUsers())
-  }
-
-  const handleStatusEnable = async()=>{
-    const { data } = await axios.put(
-      `https://sneakers-back-end.herokuapp.com/users/${users._id}`,
-      {
-        status: "Enabled"
+        status: "Disabled",
       }
     );
-    dispatch(getUsers())
-  }
+    dispatch(getUsers());
+  };
 
-  const handleManager = async()=>{
+  const handleStatusEnable = async () => {
     const { data } = await axios.put(
-      `https://sneakers-back-end.herokuapp.com/users/${users._id}`,
+      `https://sneaker-paradise-back-production.up.railway.app/users/${users._id}`,
       {
-        manager: users.manager === true ? false : true
+        status: "Enabled",
       }
     );
-    dispatch(getUsers())
-  }
+    dispatch(getUsers());
+  };
+
+  const handleManager = async () => {
+    const { data } = await axios.put(
+      `https://sneaker-paradise-back-production.up.railway.app/users/${users._id}`,
+      {
+        manager: users.manager === true ? false : true,
+      }
+    );
+    dispatch(getUsers());
+  };
 
   return (
     <>
@@ -49,12 +49,26 @@ function Users({ users }) {
             </div>
           </div>
         </td>
-        <td className="px-4 py-3 text-sm">{users?.createdAt.slice(0,10)}</td>
+        <td className="px-4 py-3 text-sm">{users?.createdAt.slice(0, 10)}</td>
         <td className="px-4 py-3 text-sm">{users.status}</td>
-        <td className="px-4 py-3 text-sm capitalize">{users.manager.toString()}</td>
-        <td className="px-4 py-3 text-sm"><button className="w-8 h-8" onClick={handleStatusDisable}><FaUserAltSlash/></button></td>
-        <td className="px-4 py-3 text-sm"><button className="w-8 h-8" onClick={handleStatusEnable}><FaUserAlt/></button></td>
-        <td className="px-4 py-3 text-sm"><button className="w-8 h-8" onClick={handleManager}><FaUsersCog/></button></td>
+        <td className="px-4 py-3 text-sm capitalize">
+          {users.manager.toString()}
+        </td>
+        <td className="px-4 py-3 text-sm">
+          <button className="w-8 h-8" onClick={handleStatusDisable}>
+            <FaUserAltSlash />
+          </button>
+        </td>
+        <td className="px-4 py-3 text-sm">
+          <button className="w-8 h-8" onClick={handleStatusEnable}>
+            <FaUserAlt />
+          </button>
+        </td>
+        <td className="px-4 py-3 text-sm">
+          <button className="w-8 h-8" onClick={handleManager}>
+            <FaUsersCog />
+          </button>
+        </td>
       </tr>
     </>
   );
