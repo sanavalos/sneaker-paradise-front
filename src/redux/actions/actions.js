@@ -47,37 +47,37 @@ export const GET_ORDER_ID = "GET_ORDER_ID";
 
 export const getShoes = () => (dispatch) => {
   return axios(
-    "https://sneaker-paradise-back-production.up.railway.app/shoes"
+    "https://sneaker-paradise-back.vercel.app/shoes"
   ).then((res) => dispatch({ type: "GET_SHOES", payload: res.data }));
 };
 
 export const getShoe = (id) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/shoes/${id}`
+    `https://sneaker-paradise-back.vercel.app/shoes/${id}`
   ).then((res) => dispatch({ type: "GET_SHOE", payload: res.data }));
 };
 
 export const getOnSale = () => (dispatch) => {
   return axios(
-    "https://sneaker-paradise-back-production.up.railway.app/shoes/onSale"
+    "https://sneaker-paradise-back.vercel.app/shoes/onSale"
   ).then((res) => dispatch({ type: "GET_ONSALE", payload: res.data }));
 };
 
 export const getBrands = () => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/brands`
+    `https://sneaker-paradise-back.vercel.app/brands`
   ).then((res) => dispatch({ type: "GET_BRANDS", payload: res.data }));
 };
 
 export const getByName = (name) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/shoes?name=${name}`
+    `https://sneaker-paradise-back.vercel.app/shoes?name=${name}`
   ).then((res) => dispatch({ type: "GET_BY_NAME", payload: res.data }));
 };
 
 export const getByCatalogBrand = (brand) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/shoes?brand=${brand}`
+    `https://sneaker-paradise-back.vercel.app/shoes?brand=${brand}`
   ).then((res) =>
     dispatch({ type: "GET_BY_CATALOG_BRAND", payload: res.data })
   );
@@ -111,7 +111,7 @@ export const getByColor = (value) => {
 export function postUser(value) {
   return async function(dispatch) {
     const create = await axios.post(
-      `https://sneaker-paradise-back-production.up.railway.app/users`,
+      `https://sneaker-paradise-back.vercel.app/users`,
       value
     );
     return dispatch({
@@ -187,13 +187,13 @@ function localStorageCarrito(data, add) {
 
 export const getUsers = () => (dispatch) => {
   return axios(
-    "https://sneaker-paradise-back-production.up.railway.app/users"
+    "https://sneaker-paradise-back.vercel.app/users"
   ).then((res) => dispatch({ type: "GET_USERS", payload: res.data }));
 };
 
 export const getClients = () => (dispatch) => {
   return axios(
-    "https://sneaker-paradise-back-production.up.railway.app/cart"
+    "https://sneaker-paradise-back.vercel.app/cart"
   ).then((res) => dispatch({ type: "GET_CLIENTS", payload: res.data }));
 };
 
@@ -233,13 +233,13 @@ export const deleteBrand = (brand) => {
 
 export const getReviews = (shoeId) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/reviews/${shoeId}`
+    `https://sneaker-paradise-back.vercel.app/reviews/${shoeId}`
   ).then((res) => dispatch({ type: "GET_REVIEWS", payload: res.data }));
 };
 
 export const getExactReview = (shoeId, idUser) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/reviews/${shoeId}`,
+    `https://sneaker-paradise-back.vercel.app/reviews/${shoeId}`,
     {
       idUser: idUser,
     }
@@ -249,7 +249,7 @@ export const getExactReview = (shoeId, idUser) => (dispatch) => {
 export function postReview(idUser, review, rating, shoeId) {
   return async function(dispatch) {
     const create = axios.post(
-      `https://sneaker-paradise-back-production.up.railway.app/reviews/${shoeId}`,
+      `https://sneaker-paradise-back.vercel.app/reviews/${shoeId}`,
       { idUser: idUser, review: review, rating: rating }
     );
     return dispatch({
@@ -262,7 +262,7 @@ export function postReview(idUser, review, rating, shoeId) {
 export const editReview = (idReview, review, rating) => (dispatch) => {
   return axios
     .put(
-      `https://sneaker-paradise-back-production.up.railway.app/reviews/exact/${idReview}`,
+      `https://sneaker-paradise-back.vercel.app/reviews/exact/${idReview}`,
       {
         review,
         rating,
@@ -274,7 +274,7 @@ export const editReview = (idReview, review, rating) => (dispatch) => {
 export const deleteReview = (idReview) => (dispatch) => {
   return axios
     .delete(
-      `https://sneaker-paradise-back-production.up.railway.app/reviews/exact/${idReview}`
+      `https://sneaker-paradise-back.vercel.app/reviews/exact/${idReview}`
     )
     .then((res) => dispatch({ type: "DELETE_REVIEW", payload: {} }));
 };
@@ -289,14 +289,14 @@ export function cleanReviews() {
 
 export const getFavorites = (idUser) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/favorites/${idUser}`
+    `https://sneaker-paradise-back.vercel.app/favorites/${idUser}`
   ).then((res) => dispatch({ type: "GET_FAVORITES", payload: res.data }));
 };
 
 export function postFavorite(idUser, shoeId) {
   return async function(dispatch) {
     const create = axios.post(
-      `https://sneaker-paradise-back-production.up.railway.app/favorites/${idUser}`,
+      `https://sneaker-paradise-back.vercel.app/favorites/${idUser}`,
       { shoeId: shoeId }
     );
     return dispatch({
@@ -309,7 +309,7 @@ export function postFavorite(idUser, shoeId) {
 export const deleteFavorite = (idUser, shoeId) => (dispatch) => {
   return axios
     .delete(
-      `https://sneaker-paradise-back-production.up.railway.app/favorites/${idUser}`,
+      `https://sneaker-paradise-back.vercel.app/favorites/${idUser}`,
       {
         data: { shoeId },
       }
@@ -321,12 +321,12 @@ export const deleteFavorite = (idUser, shoeId) => (dispatch) => {
 
 export const getOrders = (email) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/cart/${email}`
+    `https://sneaker-paradise-back.vercel.app/cart/${email}`
   ).then((res) => dispatch({ type: "GET_USER_ORDERS", payload: res.data }));
 };
 
 export const getOrderId = (idPayment) => (dispatch) => {
   return axios(
-    `https://sneaker-paradise-back-production.up.railway.app/cart/order/${idPayment}`
+    `https://sneaker-paradise-back.vercel.app/cart/order/${idPayment}`
   ).then((res) => dispatch({ type: "GET_ORDER_ID", payload: res.data }));
 };

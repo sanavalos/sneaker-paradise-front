@@ -4,12 +4,7 @@ import { UserAuth } from "../../context/AuthContext";
 
 const ProtectedAdmin = ({ children }) => {
   const { user } = UserAuth();
-
-  switch (user.email) {
-    case "luismfalco8@gmail.com":
-      return children;
-    case "marioelkamui@gmail.com":
-      return children;
+  switch (user?.email) {
     case "santiago.avalos97@gmail.com":
       return children;
     default:

@@ -27,7 +27,7 @@ function Products({ products }) {
       if (result.isConfirmed) {
         dispatch(deleteShoe(products._id));
         await axios.delete(
-          `https://sneaker-paradise-back-production.up.railway.app/shoes/${products._id}`
+          `https://sneaker-paradise-back.vercel.app/shoes/${products._id}`
         );
         Swal.fire("Deleted!", "Your shoe has been deleted.", "success");
       }
@@ -36,7 +36,7 @@ function Products({ products }) {
 
   const handleOnSale = async () => {
     const { data } = await axios.put(
-      `https://sneaker-paradise-back-production.up.railway.app/admin/onsale/${products._id}`,
+      `https://sneaker-paradise-back.vercel.app/admin/onsale/${products._id}`,
       {
         onSale: products.onSale === true ? false : true,
       }

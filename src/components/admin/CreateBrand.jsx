@@ -29,7 +29,7 @@ function CreateBrand() {
               resetForm();
 
               const { data } = await axios.post(
-                "https://sneaker-paradise-back-production.up.railway.app/brands",
+                "https://sneaker-paradise-back.vercel.app/brands",
                 {
                   name: e.name,
                 }

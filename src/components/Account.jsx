@@ -30,12 +30,7 @@ const Account = () => {
   const [showOrders, setShowOrders] = useState(false);
   const usersAdmin = () => {
     if (
-      (user?.email === "marioelkamui@gmail.com" &&
-        user?.uid === "mXfXQunp6gNgqnLrqpnPwHYcKEQ2") ||
-      (user?.email === "luismfalco8@gmail.com" &&
-        user?.uid === "eAuEIixgTwfhUcz7hFOTTbOQQxY2") ||
-      (user?.email === "santiago.avalos97@gmail.com" &&
-        user?.uid === "hmTIsYFNcReH5onJbM5k2D7WSdn1")
+      (user?.email === "santiago.avalos97@gmail.com")
     ) {
       setAdmin(true);
     } else {

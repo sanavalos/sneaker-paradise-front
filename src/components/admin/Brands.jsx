@@ -20,7 +20,7 @@ function Brands({ brands }) {
       if (result.isConfirmed) {
         dispatch(deleteBrand(brands._id));
         await axios.delete(
-          `https://sneaker-paradise-back-production.up.railway.app/brands/${brands._id}`
+          `https://sneaker-paradise-back.vercel.app/brands/${brands._id}`
         );
         Swal.fire("Deleted!", "Your brand has been deleted.", "success");
       }

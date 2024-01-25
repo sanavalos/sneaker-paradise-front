@@ -21,7 +21,7 @@ const Footer = () => {
     e.preventDefault();
     Object.values(email)[0].includes("@")
       ? axios.post(
-          `https://sneaker-paradise-back-production.up.railway.app/mail/newsletter`,
+          `https://sneaker-paradise-back.vercel.app/mail/newsletter`,
           email
         ) &&
         Swal.fire({

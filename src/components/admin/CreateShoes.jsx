@@ -79,7 +79,7 @@ function CreateShoes() {
           onSubmit={async (e, { resetForm }) => {
             try {
               const { data } = await axios.post(
-                "https://sneaker-paradise-back-production.up.railway.app/shoes",
+                "https://sneaker-paradise-back.vercel.app/shoes",
                 {
                   brand: e.brand,
                   name: e.name,

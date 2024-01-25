@@ -10,7 +10,7 @@ function Clients({ clients }) {
 
   const handleStatus = async () => {
     const { data } = await axios.put(
-      `https://sneaker-paradise-back-production.up.railway.app/cart/order/${clients.idPayment}`,
+      `https://sneaker-paradise-back.vercel.app/cart/order/${clients.idPayment}`,
       {
         status: clients.status === "Pending" ? "Received" : "Pending",
       }
